@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        .conter{
+            width: 100%;
+            height: 100vh;
+        }
+
+        .dolist{
+            width: 25%;
+
+            background-color: white;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 25px;
+        }
+
+        .heard{
+            text-align: center;
+             
+        }
+
+        .heard h1{
+            text-decoration: underline;
+        }
+
+        .inputbox{
+            box-sizing: border-box;
+            width: 100%;
+            display: flex;
+            gap: 2px;
+
+        }
+
+        .inputbox input{
+            width: 90%;
+            height: 25px;
+            outline: none;
+            border: none;
+            border: 2px solid green;
+            border-radius: 5px;
+            padding: 4px;
+            /* box-sizing: border-box; */
+        }
+
+        .inputbox input::placeholder{
+            color: green;
+        }
+
+
+        .inputbox button{
+            border: none;
+            outline: none;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 10.5px;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .inputbox button:hover{
+            background-color: rgb(22, 108, 22);
+        }
+
+        .dolisttext-up{
+            width: 100%;
+
+        }
+        .dolisttext-up ul{
+            padding-left: 0px;
+            list-style: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.3em;
+
+            color: white;
+            box-sizing: border-box;
+            padding: 5px;
+            font-weight: 600;
+            border-radius: 3px;
+        }
+
+        .dolisttext-up ul li{
+            box-sizing: border-box;
+            padding: 5px;
+            position: relative;
+             margin-bottom: 10px;
+            background-color: rgb(22, 108, 22);
+
+        }
+
+        .textudenline{
+            text-decoration: line-through;
+
+        }
+
+        span{
+            cursor: pointer;
+        }
+
+        .del{
+            height: 100%;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            left: 285px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            outline: none;
+            border: none;
+            background-color: rgb(43, 128, 43);
+            color: white;
+            box-sizing: border-box;
+            border: 2px black solid;
+            box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.5);
+            /* padding: 5px; */
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="conter">
+           <div class="dolist">
+             <div class="heard">
+                <h1>ToDoApp</h1>
+             </div>
+             <div class="inputbox">
+                <input type="text" placeholder="Enter Your taks">
+                <button id="addtexst">Add</button>
+             </div>
+             <div class="dolisttext-up">
+                <ul>
+                
+                </ul>
+               </div>
+           </div>
+
+        
+    </div>
+
+    <script>
+
+
+        let task=document.querySelector("#addtexst")
+        let ultakes=document.querySelector("ul")
+        // let html=""
+        task.addEventListener("click",function(e){
+            let inputline=document.querySelector("input")
+            let inputvalues=inputline.value;
+            // let ss= JSON.stringify(localStorage.setItem("name",inputvalues))
+            
+
+            if(inputvalues.length== 1){
+                alert("plaser enter takeer")
+                return
+            }
+
+            // let dom= localStorage.getItem("name")
+            // console.log(dom)
+
+
+            let cratli=document.createElement("li")
+            let butn=document.createElement("button")
+            butn.innerText="Delete"
+             butn.classList.add("del")
+
+            cratli.innerText=`${inputvalues}`
+            cratli.append(butn)
+            ultakes.append(cratli)
+
+
+
+
+            
+
+            
+
+
+
+                              
+                        inputline.value=" "
+
+                        sav()
+                       
+                         
+
+        })
+
+        // change=document.querySelector(".")
+        // console.log(change)
+
+        let ules=document.querySelector("ul")
+        ules.addEventListener("click",function(e){
+        //    console.log()
+        sav()
+
+        // console.log( )
+        if(e.target.nodeName=="LI"){
+            ules.classList.add("textudenline")
+            sav()
+        }
+
+        
+
+
+        if(e.target.nodeName=="BUTTON"){
+            console.log(e.target.parentElement.remove())
+            sav()
+        }
+        
+        
+        }
+
+        
+
+
+    )
+
+
+    
+
+
+    function sav(){
+     let a=   localStorage.setItem("data",ules.innerHTML)
+
+     console.log(a)
+    }
+
+    function dataes(){
+        ules.innerHTML=localStorage.getItem("data")
+    }
+
+    dataes()
+
+
+      
+
+    </script>
+    
+</body>
+</html>
